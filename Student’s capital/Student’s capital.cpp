@@ -7,7 +7,7 @@ struct Laptop {
     int price;
     double profit;
 
-    Laptop(int g, int p) : gain(g), price(p) {
+    Laptop(int p, int g) : price(p), gain(g) {
         profit = (double)gain / price;
     }
 };
@@ -21,15 +21,12 @@ int main() {
     std::cout << "Enter the total available laptops: ";
     std::cin >> K;
 
-    std::vector<int> gains(K), prices(K);
-    std::cout << "Enter gains:\n";
-    for (int& g : gains) std::cin >> g;
-    std::cout << "Enter prices:\n";
-    for (int& p : prices) std::cin >> p;
-
     std::vector<Laptop> laptops;
     for (int i = 0; i < K; i++) {
-        laptops.emplace_back(gains[i], prices[i]);
+        int gain, price;
+        std::cout << "Laptop " << (i + 1) << " ";
+        std::cin >> price >> gain;
+        laptops.emplace_back(price, gain);
     }
 
     std::sort(laptops.begin(), laptops.end(), [](const Laptop& a, const Laptop& b) {
