@@ -24,12 +24,12 @@ int main() {
     std::vector<int> gains(K), prices(K);
     std::cout << "Enter gains:\n";
     for (int& g : gains) std::cin >> g;
-    std::cout << "Enter pices:\n";
+    std::cout << "Enter prices:\n";
     for (int& p : prices) std::cin >> p;
 
     std::vector<Laptop> laptops;
     for (int i = 0; i < K; i++) {
-        laptops.emplace_back(prices[i], gains[i]);
+        laptops.emplace_back(gains[i], prices[i]);
     }
 
     std::sort(laptops.begin(), laptops.end(), [](const Laptop& a, const Laptop& b) {
